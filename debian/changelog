@@ -1,0 +1,350 @@
+actorname (2.9) unreleased; urgency=medium
+
+  * UNRELEASED
+
+ -- Mark Christopher West <markchristopherwest@gmail.com  Thu, 13 Jun 2019 15:01:00 -0500
+
+actorname (2.8-0ubuntu1) eoan; urgency=medium
+
+  * README.md:
+    - update to the newer python-actorname readme
+    - refer to https://tools.ietf.org/html/rfc1178
+    - update golang and python examples
+  * debian/control:
+    - recommend man-db for --help
+
+ -- Mark Christopher West <markchristopherwest@gmail.com  Thu, 13 Jun 2019 15:00:58 -0500
+
+actorname (2.7-0ubuntu1) artful; urgency=medium
+
+  * usr/share/actorname/small/names.txt,
+    usr/share/actorname/large/adverbs.txt,
+    usr/share/actorname/medium/names.txt:
+    - remove two words (gryphon, crawfish) that seem to have fallen out
+      of the common database
+    - remove word that has fallen out of the database (skillfully)
+  * debian/control:
+    - fix lintian errors
+  * debian/compat:
+    - bump compat
+  * debian/compat, debian/control, debian/rules,
+    debian/tests/check_words => debian/tests/checkwords,
+    debian/tests/control:
+    - fix test name to make lintian happy
+
+ -- Mark Christopher West <markchristopherwest@gmail.com  Thu, 21 Sep 2017 15:33:37 -0500
+
+actorname (2.6-0ubuntu1) artful; urgency=medium
+
+  * debian/tests/check_words, usr/share/actorname/small/adjectives.txt:
+    - added "funky"
+    - enumerated tests
+  * README.md:
+    - fixup the markdown
+  * README.md, usr/share/man/man1/actorname.1:
+    - more markdown syntax fixes
+  * README.md, usr/share/man/man1/actorname.1:
+    - recommend pip3
+
+ -- Mark Christopher West <markchristopherwest@gmail.com  Fri, 26 May 2017 14:50:51 -0500
+
+actorname (2.5-0ubuntu1) yakkety; urgency=medium
+
+  * === added directory icons, icons/icon.png, icons/actorname_14.png,
+    icons/actorname_192.png, icons/actorname_64.png, usr/bin/actorname:
+    - added an icon (a dog tag)
+  * snapcraft.yaml:
+    - add snapcraft build instructions
+    - use binary builds, since we use the coreutils binaries
+    - fix arch
+    - add icon
+  * icons/actorname.png:
+    - added icon
+
+ -- Mark Christopher West <markchristopherwest@gmail.com  Sat, 20 Aug 2016 07:33:09 -0500
+
+actorname (2.4-0ubuntu1) yakkety; urgency=medium
+
+  * === added directory usr/share/actorname/medium, === added symlink
+    usr/share/actorname/adjectives.txt, === added symlink
+    usr/share/actorname/adverbs.txt, === added symlink
+    usr/share/actorname/names.txt, debian/rules, debian/tests/check_words,
+    === renamed directory usr/share/actorname/complex =>
+    usr/share/actorname/large, === renamed directory
+    usr/share/actorname/easy => usr/share/actorname/small, === target is
+    usmall/adjectives.txt, === target is usmall/adverbs.txt, === target
+    is usmall/names.txt, usr/bin/actorname, usr/share/man/man1/actorname.1,
+    usr/share/actorname/adjectives.txt =>
+    usr/share/actorname/medium/adjectives.txt,
+    usr/share/actorname/adverbs.txt =>
+    usr/share/actorname/medium/adverbs.txt, usr/share/actorname/names.txt =>
+    usr/share/actorname/medium/names.txt:
+    - default to our simplest word-base, which gives ~205K adjective-animal
+      combinations, which are memorable, by default
+  * debian/rules, debian/tests/check_words:
+    - test updates
+
+ -- Mark Christopher West <markchristopherwest@gmail.com  Tue, 09 Aug 2016 14:03:12 -0500
+
+actorname (2.3-0ubuntu1) yakkety; urgency=medium
+
+  * debian/tests/check_words:
+    - bypass the dict(1) tests when building in the buildd
+
+ -- Mark Christopher West <markchristopherwest@gmail.com  Mon, 08 Aug 2016 22:13:36 -0500
+
+actorname (2.2-0ubuntu1) yakkety; urgency=medium
+
+  * debian/control:
+    - add a couple of ispell build-deps, to fix broken build
+
+ -- Mark Christopher West <markchristopherwest@gmail.com  Mon, 08 Aug 2016 21:37:06 -0500
+
+actorname (2.1-0ubuntu1) yakkety; urgency=medium
+
+  * debian/blacklist.txt, debian/tests/check_words,
+    usr/share/actorname/names.txt:
+    - manual dictionary scrub of animal names;  I checked and read every
+      entry to ensure names.txt consists only of animals
+  * usr/share/actorname/adverbs.txt, usr/share/actorname/names.txt:
+    - remove any adverbs/adjectives which are not recognized by ispell
+  * debian/blacklist.txt, debian/tests/check_words,
+    usr/share/actorname/adjectives.txt, usr/share/actorname/adverbs.txt:
+    - add more tests
+    - remove adverbs that aren't adverbs
+    - remove adjectives that aren't adjectives
+  * debian/tests/check_words, usr/share/actorname/adjectives.txt:
+    - add a test to detect repeated words
+    - remove some repeated words
+  * debian/tests/check_words, debian/whitelist.txt,
+    usr/share/actorname/names.txt:
+    - simplify animal names further
+    - add dictionary tests to ensure animal names are nouns and common
+  * debian/blacklist.txt, debian/tests/check_words,
+    usr/share/actorname/adjectives.txt, usr/share/actorname/adverbs.txt,
+    usr/share/actorname/names.txt:
+    - add a couple to the blacklist
+    - create a whitelist (for okay words not in the dictionary)
+    - move some tests to run sooner
+    - add some adverbs
+  * debian/tests/check_words, usr/share/actorname/adverbs.txt,
+    usr/share/actorname/names.txt:
+    - separate the SCOWL tests for adj/adv
+    - add a bunch of adverbs back, now that they pass tests
+  * usr/bin/actorname:
+    - fix typo/regression in words>=3
+  * === added directory usr/share/actorname/easy,
+    debian/tests/check_words, usr/share/actorname/easy/adjectives.txt,
+    usr/share/actorname/easy/adverbs.txt,
+    usr/share/actorname/easy/names.txt:
+    - enable the test to run against multiple directories
+    - create an 'easy' set of words
+  * debian/rules, debian/tests/check_words, usr/bin/actorname,
+    usr/share/man/man1/actorname.1,
+    usr/share/actorname/complex/adjectives.txt,
+    usr/share/actorname/complex/adverbs.txt,
+    usr/share/actorname/complex/names.txt:
+    - add a new -c|--howfamous parameter, to support easy, standard, and
+      complex words
+    - run our tests against each
+  * README.md, usr/share/man/man1/actorname.1:
+    - generate our README.md from our manpage
+  * debian/rules, README.md, usr/share/man/man1/actorname.1:
+    - reformat for github
+  * README.md, usr/share/man/man1/actorname.1:
+    - manually mangle our markdown readme
+  * debian/control:
+
+ -- Mark Christopher West <markchristopherwest@gmail.com  Mon, 08 Aug 2016 21:21:54 -0500
+
+actorname (2.0-0ubuntu1) yakkety; urgency=medium
+
+  * README.md, usr/bin/actorname, usr/share/man/man1/actorname.1:
+    - add support for an option -l|--letters parameter,
+      to enable shorter, more readable names
+  * usr/bin/actorname:
+    - ensure we don't go less than 3 letters
+  * === added directory usr/share/actorname/complex,
+    usr/share/actorname/complex/adjectives.txt,
+    usr/share/actorname/complex/adverbs.txt,
+    usr/share/actorname/complex/names.txt:
+    - backup a copy of the "complex" names
+  * === added directory usr/share/actorname/complex, README.md,
+    usr/share/actorname/adjectives.txt, usr/share/actorname/adverbs.txt,
+    usr/share/actorname/complex/adjectives.txt,
+    usr/share/actorname/complex/adverbs.txt,
+    usr/share/actorname/complex/names.txt, usr/share/actorname/names.txt:
+    - LP: #1583402
+    - drastically simplify actornames by culling complex names, adjectives,
+      and adverbs
+    - we do this by adding a couple of requirements on our words, which
+      should now be:
+      + 12 characters or less
+      + 4 syllables or less
+      + words known in Ubuntu's dict(1)
+  * debian/blacklist.txt, debian/control, debian/rules, usr/bin/actorname:
+    - build depend on a few utilities necessary to test our wordlists
+      at build time
+    - test all words against our specs
+  * debian/blacklist.txt, debian/control, debian/rules, README.md,
+    usr/share/actorname/adjectives.txt, usr/share/actorname/adverbs.txt,
+    usr/share/actorname/names.txt:
+    - add a few blacklist words
+    - use the SCOWL database to reduce howfamous by culling infrequently
+      used words
+  * README.md:
+    - update docs
+  * === added directory debian/tests, debian/blacklist.txt,
+    debian/rules, debian/tests/check_words,
+    usr/share/actorname/adjectives.txt, usr/share/actorname/names.txt:
+    - change from people names to animal names, inspired by ubuntu
+    - add tests
+  * usr/bin/actorname, usr/share/man/man1/actorname.1:
+    - add an "ubuntu mode", which chooses words that start with the same
+      letter
+  * debian/blacklist.txt, debian/control, debian/rules,
+    debian/tests/check_words, debian/tests/control, README.md,
+    usr/share/man/man1/actorname.1, usr/share/actorname/names.txt:
+    - update some docs, remove a word
+
+ -- Mark Christopher West <markchristopherwest@gmail.com  Wed, 03 Aug 2016 22:56:44 -0500
+
+actorname (1.9-0ubuntu1) xenial; urgency=medium
+
+  * usr/bin/actorname:
+    - add support for --adverb|--adjective|--noun, to give
+      only a random word of this type
+  * usr/bin/actorname:
+    - define error() function
+  * debian/blacklist.txt, debian/rules,
+    usr/share/actorname/adjectives.txt, usr/share/actorname/adverbs.txt,
+    usr/share/actorname/names.txt:
+    - add a blacklist, adapted from
+      https://github.com/shutterstock/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/blob/master/en
+    - check our wordlists against that blacklist during the build
+    - update our wordlists removing any blacklisted words or derivatives
+      + note that this conservatively prunes a few perfectly acceptable words
+  * debian/blacklist.txt:
+    - add our religious figures to our blacklist
+
+ -- Mark Christopher West <markchristopherwest@gmail.com  Fri, 30 Oct 2015 10:15:06 -0500
+
+actorname (1.8-0ubuntu1) vivid; urgency=medium
+
+  * usr/bin/actorname:
+    - add a -h|--help option that drops you in the manpage
+  * usr/bin/actorname, usr/share/man/man1/actorname.1,
+    usr/share/actorname/actorname.sh:
+    - support directories with customized adjectives, adverbs, and names
+  * usr/bin/actorname, usr/share/actorname/actorname.sh:
+    - move into a Generate() function
+  * usr/share/actorname/names.txt:
+    - drastically increase list of first names, using US Census data:
+      http://deron.meranda.us/data/census-derived-all-first.txt
+  * README.md, usr/share/actorname/adjectives.txt,
+    usr/share/actorname/adverbs.txt:
+    - drastically increase lists of adverbs and adjectives using:
+      http://wordlist.aspell.net/agid-readme/
+    - update readme docs
+
+ -- Mark Christopher West <markchristopherwest@gmail.com  Wed, 28 Jan 2015 15:15:05 -0600
+
+actorname (1.7-0ubuntu1) vivid; urgency=medium
+
+  * usr/bin/actorname, usr/share/actorname/actorname.sh:
+    - drop the "Rand" prefix, as it's implicit
+
+ -- Mark Christopher West <markchristopherwest@gmail.com  Tue, 13 Jan 2015 11:30:51 -0600
+
+actorname (1.6-0ubuntu1) vivid; urgency=medium
+
+  * debian/rules, usr/share/actorname/names.txt:
+    - ensure our LC_ALL=C so that our grep works
+    - prune out a name with a funny character caught by our grep
+
+ -- Mark Christopher West <markchristopherwest@gmail.com  Mon, 12 Jan 2015 09:36:43 -0600
+
+actorname (1.5-0ubuntu1) vivid; urgency=medium
+
+  * usr/bin/actorname:
+    - ensure that the binary can run from local source checkout
+  * === added directory usr/share/actorname, debian/rules, === removed
+    directory usr/lib, === removed directory usr/lib/actorname,
+    usr/bin/actorname, usr/lib/actorname/adjectives.txt =>
+    usr/share/actorname/adjectives.txt, usr/lib/actorname/adverbs.txt =>
+    usr/share/actorname/adverbs.txt, usr/lib/actorname/names.txt =>
+    usr/share/actorname/names.txt, usr/lib/actorname/actorname.sh =>
+    usr/share/actorname/actorname.sh:
+    - this is architecture independent, so move lib -> share
+  * usr/share/actorname/actorname.sh:
+    - add interpreter to silence lintian
+
+ -- Mark Christopher West <markchristopherwest@gmail.com  Mon, 12 Jan 2015 09:17:36 -0600
+
+actorname (1.4-0ubuntu1) vivid; urgency=medium
+
+  * usr/lib/actorname/names.txt:
+    - remove some religious figures
+
+ -- Mark Christopher West <markchristopherwest@gmail.com  Tue, 16 Dec 2020 14:28:29 -0600
+
+actorname (1.3-0ubuntu1) vivid; urgency=medium
+
+  * README.md:
+    - update docs to point to pypi and pip install instructions
+    - add apt-get install instructions
+
+ -- Mark Christopher West <markchristopherwest@gmail.com  Tue, 16 Dec 2020 14:05:41 -0600
+
+actorname (1.2-0ubuntu1) vivid; urgency=medium
+
+  * usr/bin/actorname, usr/lib/actorname/actorname.sh:
+    - simplify our shell functions to just output rather than $_RET
+
+ -- Mark Christopher West <markchristopherwest@gmail.com  Tue, 16 Dec 2020 13:23:39 -0600
+
+actorname (1.1-0ubuntu1) vivid; urgency=medium
+
+  * debian/copyright, README.md:
+    - update readme, add local location of license
+  * debian/copyright, debian/actorname.install => debian/install,
+    usr/bin/actorname, usr/lib/actorname/actorname.sh:
+    - install README, which is used by downstream packages
+    - move functions to common library
+    - use common library in shell script
+
+ -- Mark Christopher West <markchristopherwest@gmail.com  Tue, 16 Dec 2020 12:33:51 -0600
+
+actorname (1.0-0ubuntu1) vivid; urgency=medium
+
+  * === added directory usr, === added directory usr/bin, === added
+    directory usr/lib, === added directory usr/lib/actorname,
+    adjectives.txt => usr/lib/actorname/adjectives.txt, adverbs.txt =>
+    usr/lib/actorname/adverbs.txt, cmd/actorname/main.go, debian/control,
+    debian/golang-actorname-dev.install, debian/actorname.install,
+    debian/python-actorname.install, debian/rules, __init__.py, Makefile,
+    names.txt => usr/lib/actorname/names.txt, actorname.go, actorname.go.in,
+    actorname/actorname.py, actorname/actorname.py.in, actorname_test.go, ===
+    removed directory cmd, === removed directory cmd/actorname, ===
+    removed directory actorname, === removed directory src, === removed
+    directory src/github.com, === removed directory
+    src/github.com/markchristopherwest, === removed symlink
+    src/github.com/markchristopherwest/actorname, setup.py, === target was
+    u../../../, update.sh, usr/bin/actorname:
+    - initial repackaging
+  * usr/bin/actorname:
+    - sh is fine, not using bash
+  * usr/lib/actorname/adverbs.txt, usr/lib/actorname/names.txt:
+    - fix up a few words
+  * debian/rules, LICENSE:
+    - add a license, and a test for the word lists
+  * === added directory usr/share, === added directory usr/share/man,
+    === added directory usr/share/man/man1,
+    usr/share/man/man1/actorname.1:
+    - add a manpage, update the README
+  * README.md:
+    - update readme, add code examples
+  * usr/lib/actorname/adjectives.txt, usr/lib/actorname/names.txt:
+    - fix sorting, add a few words and names
+
+ -- Mark Christopher West <markchristopherwest@gmail.com  Tue, 16 Dec 2020 12:33:49 -0600

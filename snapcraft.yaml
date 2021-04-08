@@ -1,0 +1,22 @@
+name: actorname
+version: "2.9"
+summary: "generate pronouncable, perhaps even memorable, actor names"
+description: |
+ This utility will generate actor names, consisting of a random
+ combination of an adverb, adjective, and an animal name.  These are
+ useful for unique hostnames, VMs, or containers, for instance.
+confinement: strict
+icon: icons/actorname.png
+
+apps:
+  actorname:
+    command: bin/actorname
+
+parts:
+  wrapper:
+    plugin: dump
+    source: usr/
+  mypackages:
+    plugin: nil
+    stage-packages:
+    - coreutils

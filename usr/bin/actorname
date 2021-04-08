@@ -1,0 +1,107 @@
+#!/bin/sh
+#
+# actorname
+#
+# Copyright 2020 Mark Christopher West <markchristopherwest@gmail.com>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+set -e
+
+
+error() {
+	printf "ERROR: %s\n" "$@"
+	exit 1
+}
+
+PKG=actorname
+[ -d "$PATH/share/$PKG" ] && DIR="$SNAP/share/$PKG" || DIR="/usr/share/$PKG"  
+WORDS=2
+SEPARATOR="-"
+LETTERS=99
+HOWFAMOUS=$(shuf -i 0-2 -n 1)
+UBUNTU=
+while [ ! -z "$1" ]; do
+	case "${1}" in
+		-w|--words)
+			WORDS="$2"
+			shift 2
+		;;
+		-s|--separator)
+			SEPARATOR="$2"
+			shift 2
+		;;
+		-h|--help)
+			exec man $PKG
+		;;
+		-d|--dir)
+			DIR="$2"
+			shift 2
+		;;
+		-c|--howfamous)
+			HOWFAMOUS="$2"
+			shift 2
+		;;
+		*)
+			error "Unknown options [$1]"
+		;;
+	esac
+done
+
+[ $LETTERS -lt 3 ] && LETTERS=3
+
+case $HOWFAMOUS in
+	0)
+		DIR="$DIR/a"
+	;;
+	1)
+		DIR="$DIR/b"
+	;;
+	2)
+		DIR="$DIR/c"
+	;;
+	*)
+		DIR="$DIR"
+	;;
+esac
+
+
+Name() {
+	grep "^$UBUNTU.\{0,$LETTERS\}$" $DIR/names.txt | shuf -n 1
+}
+
+
+Generate() {
+
+	if [ "$NAME" = "1" ]; then
+		printf "%s\n" "$(Name)"
+		return
+
+	elif [ "$WORDS" = "1" ]; then
+	        actor="$(Name)"
+                nameLast=$(echo "$actor"  | awk '{ print $NF }')
+                printf "%s%s%s\n" "$nameLast"
+
+	elif [ "$WORDS" = "2" ]; then
+		actor="$(Name)"
+		nameFirst=$(echo "$actor" | awk '{ print $1 }')
+		nameLast=$(echo "$actor"  | awk '{ print $NF }')
+		printf "%s%s%s\n" "$nameFirst" "$SEPARATOR" "$nameLast"
+	else
+				printf "%s\n" "$(Name)"
+
+	fi
+
+}
+
+Generate

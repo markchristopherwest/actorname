@@ -1,0 +1,18 @@
+Source: actorname
+Section: admin
+Priority: optional
+Maintainer: Mark Christopher West <markchristopherwest@gmail.com
+Build-Depends: debhelper (>= 9), dict, liblingua-en-syllable-perl, dictd, dict-gcide, dict-wn, scowl, ispell, ienglish-common, iamerican
+Standards-Version: 4.0.0
+Homepage: http://launchpad.net/actorname
+Vcs-Browser: http://bazaar.launchpad.net/~actorname/actorname/trunk/files
+Vcs-Bzr: https://code.launchpad.net/actorname/actorname/trunk
+
+Package: actorname
+Architecture: all
+Depends: ${misc:Depends}
+Recommends: man-db
+Description: RFC1178 implmentation to generate pronouncable, perhaps even memorable, actor names
+ This utility will generate "actor names", consisting of a random
+ combination of an adverb, adjective, and an animal name.  These are
+ useful for unique hostnames, VMs, or containers, for instance.

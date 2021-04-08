@@ -1,0 +1,28 @@
+#!/bin/sh
+
+set -e
+fail=0
+[ -n "$1" ] && dir="$1" || dir="../../usr/share/actorname"
+names=$(cat $dir/names.txt)
+
+succeed() {
+	echo "⤷ Success"
+}
+
+fail() {
+	echo "⤷ Failure"
+	exit 1
+}
+
+echo "TEST [01/16]: Ensure that we have no blacklisted words or derivatives [$dir]..."
+grep -xi -Ff debian/blacklist.txt $dir/*txt && fail || succeed
+
+# echo "TEST [02/16]: Ensure that we only have a-z in our words; no funny characters; no upper case [$dir]..."
+grep "[^abcdefghijklmnopqrstuvwxyz]\-" $dir/*txt && fail || succeed
+
+# echo "TEST [04/16]: Ensure that we have no names more than $chars characters [$dir]..."
+# grep "[a-z]\{$((chars+1))\}" $dir/names.txt && fail || succeed
+
+# echo "TEST [06/16]: Ensure that we have no repeated words [$dir]..."
+# grep -Fx -f $dir/names.txt && fail || succeed
+
